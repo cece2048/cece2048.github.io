@@ -1,3 +1,5 @@
+
+'use strict'
 var videoElement = document.querySelector('video');
 var audioSelect = document.querySelector('select#audioSource');
 var videoSelect = document.querySelector('select#videoSource');
@@ -44,7 +46,7 @@ function getStream() {
         .then(gotStream).catch(handleError);
 }
 
-function gotStream() {
+function gotStream(stream) {
     window.stream = stream;
     audioSelect.selectedIndex = [...audioSelect.options]
         .findIndex(option => option.text === stream.getAudioTracks()[0].label);
